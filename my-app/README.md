@@ -96,4 +96,4 @@ I implemented SSR on key pages:
 - **Server-Side Rendering (SSR)**: Product pages and listings are rendered on the server, improving SEO and initial page load performance
 - **Debounced Search**: 300ms delay prevents excessive filtering during typing
 - **URL Parameter Persistence**: Filters and search queries are stored in the URL
-- **Optimistic Updates**: Cart updates happen instantly on the client
+- **Optimistic Updates**: Cart updates happen instantly on the client.
