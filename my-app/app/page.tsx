@@ -6,7 +6,6 @@ import ProductView from '@/components/product/ProductView';
 import FilterSection from '@/components/product/FilterSection';
 import SearchBar from '@/components/product/SearchBar';
 
-// ✅ Server Component - SSR Enabled
 export default async function HomePage({
   searchParams,
 }: {
@@ -17,7 +16,7 @@ export default async function HomePage({
   const category = typeof params.category === 'string' ? params.category : 'all';
   const priceRange = typeof params.priceRange === 'string' ? params.priceRange : 'all';
 
-  // Server-side filtering
+
   const filteredProducts = PRODUCTS.filter(product => {
     if (category && category !== 'all' && product.category !== category) {
       return false;
