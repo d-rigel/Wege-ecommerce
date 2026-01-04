@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Wege ShopingHub - E-Commerce Application
 
-## Getting Started
+This project is e-commerce application built with Next.js 16, featuring server-side rendering, advanced filtering, and a seamless shopping experience.
 
-First, run the development server:
+## How to Run the Project
+
+### Prerequisites
+
+- Node.js 18.x or higher
+- npm or yarn package manager
+
+### Installation Steps
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/d-rigel/Wege-ecommerce.git
+   cd my-app
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. **Run the development server**
+
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+4. **Open your browser**
+
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+### Build for Production
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Create optimized production build
+npm run build
+
+# Start production server
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack & Architecture
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### **Framework: Next.js 16 (App Router)**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+I chose Next.js for several key reasons:
 
-## Learn More
+- **Server-Side Rendering (SSR)**: Product pages and listings are rendered on the server, improving SEO and initial page load performance
+- **Static Site Generation (SSG)**: Product detail pages are pre-generated at build time for optimal performance
+- **File-based Routing**: Intuitive routing structure with the App Router
+- **Image Optimization**: Built-in `next/image` component for automatic image optimization
+- **TypeScript Support**: First-class TypeScript integration out of the box
 
-To learn more about Next.js, take a look at the following resources:
+## Styling:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+I used Tailwind CSS for my styling because it is
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Faster development with no need to write custom CSS
+- Smaller CSS bundle sizes compared to traditional CSS frameworks
+- Consistent spacing, colors, and typography across the entire application
+- Easy maintenance and scalability
 
-## Deploy on Vercel
+## State Management: React Context API
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+I used React context API for my state management because is simple and light weight since is inbuit and the app is not too big.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Data Loading Strategy
+
+### **Server-Side Rendering (SSR)**
+
+I implemented SSR on key pages:
+
+**Home Page (`app/page.tsx`):**
+
+- Products are filtered on the server based on URL parameters
+- Initial HTML includes fully rendered product listings
+- Improves SEO and provides instant content visibility
+
+**Product Detail Page (`app/products/[id]/page.tsx`):**
+
+- Uses `generateStaticParams()` for Static Site Generation
+- All product pages are pre-rendered at build time
+- Dynamic metadata generation for optimal SEO
+
+### **Bonus Features Implemented**
+
+- **Server-Side Rendering (SSR)**: Product pages and listings are rendered on the server, improving SEO and initial page load performance
+- **Debounced Search**: 300ms delay prevents excessive filtering during typing
+- **URL Parameter Persistence**: Filters and search queries are stored in the URL
+- **Optimistic Updates**: Cart updates happen instantly on the client
